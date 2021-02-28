@@ -1,9 +1,11 @@
 <?php
-
+session_start();
 include 'src/controller.php';
 
 $section = $_GET['section'] ?? $_POST['section'] ?? 'home';
 $action = $_GET['action'] ?? $_POST['action'] ??  'default';
+
+
 
 if($section == 'about-us'){
     include "controller/aboutPage.php";
