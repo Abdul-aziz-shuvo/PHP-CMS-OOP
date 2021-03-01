@@ -4,25 +4,39 @@ class ContactController extends Controller
 {
     public function runBeforeAction(){
         if($_SESSION['has_submitted_form'] ?? 0 == 1){
-            include "view/contac/thank-you.html";
+            $variables = [
+                'title' => 'you already contacted us',
+                'details' => 'we will back too you soon'
+            ];
+            $template = new Template('default');
+            $template->view('static-page',$variables);
             return false;
           }
         return true;
     }
 
     public function defaultAction(){
-       if(!$this->runBeforeAction()){
-           return;
-       }
-        include "view/contact/contact.html";
+        $variables = [
+            'title' => 'Home Page',
+            'details' => 'This is home page'
+        ];
+        $template = new Template('default');
+        $template->view('/contact/contact',$variables);
+        // include "view/contact/contact.html";
     }
 
     public function submitAction(){
-        if(!$this->runBeforeAction()){
-            return;
-        }
+        
         $_SESSION['has_submitted_form'] = 1;
-        include "view/contact/thank-you.html";
+
+        $variables = [
+            'title' => 'Thanks for contact us',
+            'details' => 'we will back too you soon'
+        ];
+        $template = new Template('default');
+        $template->view('static-page',$variables);
+
+        // include VIEW_PATH."contact/thank-you.html";
     }   
 }
 

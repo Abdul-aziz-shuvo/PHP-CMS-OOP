@@ -1,20 +1,28 @@
 <?php
 session_start();
-include 'src/controller.php';
+
+define('ROOT_PATH',dirname(__FILE__).DIRECTORY_SEPARATOR);
+define('VIEW_PATH',ROOT_PATH.'view'.DIRECTORY_SEPARATOR);
+
+
+include ROOT_PATH.'src/controller.php';
+include ROOT_PATH.'src/template.php';
 
 $section = $_GET['section'] ?? $_POST['section'] ?? 'home';
 $action = $_GET['action'] ?? $_POST['action'] ??  'default';
-
+ 
 
 
 if($section == 'about-us'){
-    include "controller/aboutPage.php";
+    include ROOT_PATH."controller/aboutPage.php";
     $aboutController = new AboutController();
     $aboutController->runAction($action);
 }else if($section == 'contact-us'){
-    include "controller/contactPage.php";
+    include ROOT_PATH."controller/contactPage.php";
     $contactController = new ContactController();
     $contactController->runAction($action);
 }else{
-    include "controller/homePage.php";
+    include ROOT_PATH."controller/homePage.php";
+    $homeController = new HomeController();
+    $homeController->runAction($action);
 }
