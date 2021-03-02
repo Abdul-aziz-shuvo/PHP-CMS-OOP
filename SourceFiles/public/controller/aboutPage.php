@@ -3,11 +3,15 @@
 class AboutController extends Controller{
     public function defaultAction(){
 
-        $variables = [
-            'title' => 'About us Page',
-            'details' => 'This is about us page'
-        ];
+       
         $template = new Template('default');
+        
+        $dbc = Database::getConnection();
+        $page = new Page($dbc);
+
+        $pageObj =  $page->findById(2);
+        $variables = $pageObj;
+
         $template->view('static-page',$variables);
         
     }

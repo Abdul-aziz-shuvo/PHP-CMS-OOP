@@ -9,6 +9,13 @@ class ContactController extends Controller
                 'details' => 'we will back too you soon'
             ];
             $template = new Template('default');
+
+            $dbc = Database::getConnection();
+            $page = new Page($dbc);
+    
+            $pageObj =  $page->findById(5);
+            $variables = $pageObj;
+            
             $template->view('static-page',$variables);
             return false;
           }
@@ -16,11 +23,17 @@ class ContactController extends Controller
     }
 
     public function defaultAction(){
-        $variables = [
-            'title' => 'Home Page',
-            'details' => 'This is home page'
-        ];
+       
         $template = new Template('default');
+
+        $dbc = Database::getConnection();
+        $page = new Page($dbc);
+
+        $pageObj =  $page->findById(3);
+        $variables = $pageObj;
+        
+
+        
         $template->view('/contact/contact',$variables);
         // include "view/contact/contact.html";
     }
@@ -34,6 +47,13 @@ class ContactController extends Controller
             'details' => 'we will back too you soon'
         ];
         $template = new Template('default');
+
+        $dbc = Database::getConnection();
+        $page = new Page($dbc);
+
+        $pageObj =  $page->findById(4);
+        $variables = $pageObj;
+
         $template->view('static-page',$variables);
 
         // include VIEW_PATH."contact/thank-you.html";

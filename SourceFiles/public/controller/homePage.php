@@ -2,13 +2,18 @@
 
 
 class HomeController extends Controller{
+    
     public function defaultAction(){
-
-        $variables = [
-            'title' => 'Home Page',
-            'details' => 'This is home page'
-        ];
+    
         $template = new Template('default');
+
+        $dbc = Database::getConnection();
+        $page = new Page($dbc);
+
+        $pageObj =  $page->findById(1);
+        $variables = $pageObj;
+        
+
         $template->view('static-page',$variables);
         
     }
