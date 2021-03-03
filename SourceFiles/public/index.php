@@ -9,13 +9,27 @@ include ROOT_PATH.'src/controller.php';
 include ROOT_PATH.'src/template.php';
 include ROOT_PATH.'model/Page.php';
 include ROOT_PATH.'src/DatabaseConnect.php';
+include ROOT_PATH.'src/Router.php';
 
-var_dump($_GET);
+
+
+
+
+
+
 Database::connect('localhost','cms','root','');
+$dbc =  Database::getInstance();
+$dbc =  Database::getConnection();
+
+
 
 $section = $_GET['section'] ?? $_POST['section'] ?? 'home';
 $action = $_GET['action'] ?? $_POST['action'] ??  'default';
  
+$router = new Router($dbc);
+$router->findBy('pretty_url','about_us');
+var_dump($router);
+
 
 
 if($section == 'about-us'){

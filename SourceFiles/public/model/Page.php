@@ -1,6 +1,6 @@
 <?php
 
-class Page{
+class Page {
     public $id;
     public $title;
     public $dbc;

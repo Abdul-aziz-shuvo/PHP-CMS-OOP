@@ -14,6 +14,7 @@ final class Database {
 
         try{
             self::$connection  =  new PDO("mysql:host=$host;dbname=$db", $user, $password);
+           
         }catch(PDOExecption $e){
             echo 'connection failed' .$e->getMessage();
             die;

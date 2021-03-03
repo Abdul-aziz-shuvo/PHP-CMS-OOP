@@ -7,7 +7,9 @@ class HomeController extends Controller{
     
         $template = new Template('default');
 
+        $dbc = Database::getInstance();
         $dbc = Database::getConnection();
+       
         $page = new Page($dbc);
 
         $pageObj =  $page->findById(1);
