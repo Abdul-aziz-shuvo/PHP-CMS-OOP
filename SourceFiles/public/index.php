@@ -13,11 +13,7 @@ include ROOT_PATH.'src/Router.php';
 
 
 
-
-
-
-
-Database::connect('localhost','cms','root','');
+Database::connect('localhost','cms','user','password');
 $dbc =  Database::getInstance();
 $dbc =  Database::getConnection();
 
@@ -27,21 +23,14 @@ $section = $_GET['section'] ?? $_POST['section'] ?? 'home';
 $action = $_GET['action'] ?? $_POST['action'] ??  'default';
  
 $router = new Router($dbc);
-$router->findBy('pretty_url','about_us');
-var_dump($router);
+$r =  $router->findBy('pretty_url',$section);
 
 
+if($section == $r['pretty_url']){
+    $ControlerName = ucfirst($r['modules']).'Controller';
 
-if($section == 'about-us'){
-    include ROOT_PATH."controller/aboutPage.php";
-    $aboutController = new AboutController();
-    $aboutController->runAction($action);
-}else if($section == 'contact-us'){
-    include ROOT_PATH."controller/contactPage.php";
-    $contactController = new ContactController();
-    $contactController->runAction($action);
-}else{
-    include ROOT_PATH."controller/homePage.php";
-    $homeController = new HomeController();
-    $homeController->runAction($action);
+    include ROOT_PATH."controller/".$r['modules']."Controller.php";
+    $Controller = new $ControlerName();
+    $Controller->setEntity($r['entity_id']);
+    $Controller->runAction($action);
 }

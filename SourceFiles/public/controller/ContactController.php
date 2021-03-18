@@ -13,7 +13,7 @@ class ContactController extends Controller
             $dbc = Database::getConnection();
             $page = new Page($dbc);
     
-            $pageObj =  $page->findById(5);
+            $pageObj =  $page->findBy('id',5);
             $variables = $pageObj;
             
             $template->view('static-page',$variables);
@@ -29,7 +29,7 @@ class ContactController extends Controller
         $dbc = Database::getConnection();
         $page = new Page($dbc);
 
-        $pageObj =  $page->findById(3);
+        $pageObj =  $page->findBy('id',$this->entity_id);
         $variables = $pageObj;
         
 
@@ -51,7 +51,7 @@ class ContactController extends Controller
         $dbc = Database::getConnection();
         $page = new Page($dbc);
 
-        $pageObj =  $page->findById(4);
+        $pageObj =  $page->findBy('id',$this->entity_id);
         $variables = $pageObj;
 
         $template->view('static-page',$variables);

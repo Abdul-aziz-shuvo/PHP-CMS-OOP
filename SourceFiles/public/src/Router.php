@@ -1,6 +1,6 @@
 <?php 
 
-include ROOT_PATH.'src/Entity.php';
+include ROOT_PATH.'src/Route.php';
 
 class Router extends Entity {
     
@@ -9,13 +9,13 @@ class Router extends Entity {
         $this->dbc = $dbc;
         $this->tablename = 'routes';
         $this->fields = [
-            'id',
-            'modules',
-            'action',
-            'entity_id',
-            'pretty_url'
+            'id' => '',
+            'modules' => '',
+            'action' => '',
+            'entity_id' => '',
+            'pretty_url' => ''
         ];
     }
 
      
-}
+} 

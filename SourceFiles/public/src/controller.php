@@ -2,6 +2,7 @@
 
 
 class controller{
+    protected $entity_id;
     public function runAction($actionName){
 
         if(method_exists($this,'runBeforeAction')){
@@ -18,5 +19,9 @@ class controller{
         }else{
             include VIEW_PATH.'404.html';
         }
+    }
+
+    public function setEntity($entity_id){
+        $this->entity_id = $entity_id;
     }
 }

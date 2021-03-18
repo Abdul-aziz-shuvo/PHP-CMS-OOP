@@ -6,10 +6,11 @@ class AboutController extends Controller{
        
         $template = new Template('default');
         
-        $dbc = Database::getConnection();
+        $dbc =  Database::getInstance();
+        $dbc =  Database::getConnection();
         $page = new Page($dbc);
 
-        $pageObj =  $page->findById(2);
+        $pageObj =  $page->findBy('id',$this->entity_id);
         $variables = $pageObj;
 
         $template->view('static-page',$variables);

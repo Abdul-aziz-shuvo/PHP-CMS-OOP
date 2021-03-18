@@ -12,7 +12,7 @@ class HomeController extends Controller{
        
         $page = new Page($dbc);
 
-        $pageObj =  $page->findById(1);
+        $pageObj =  $page->findBy('id',$this->entity_id);
         $variables = $pageObj;
         
 
