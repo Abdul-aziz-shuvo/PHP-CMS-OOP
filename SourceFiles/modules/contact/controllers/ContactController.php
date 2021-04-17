@@ -34,23 +34,23 @@ class ContactController extends Controller
         
 
         
-        $template->view('/contact/contact',$variables);
+        $template->view('contact/views/contact',$variables);
         // include "view/contact/contact.html";
     }
 
     public function submitAction(){
-        
+       
         $_SESSION['has_submitted_form'] = 1;
 
-        $variables = [
-            'title' => 'Thanks for contact us',
-            'details' => 'we will back too you soon'
-        ];
+        // $variables = [
+        //     'title' => 'Thanks for contact us',
+        //     'details' => 'we will back too you soon'
+        // ];
         $template = new Template('default');
 
         $dbc = Database::getConnection();
         $page = new Page($dbc);
-
+      
         $pageObj =  $page->findBy('id',$this->entity_id);
         $variables = $pageObj;
 

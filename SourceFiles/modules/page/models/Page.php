@@ -1,7 +1,7 @@
 <?php
  
 
- include ROOT_PATH.'src/Entity.php';
+ include MAIN_PATH.'src/Entity.php';
 
 class Page extends Entity {
     

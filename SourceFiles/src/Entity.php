@@ -13,6 +13,7 @@ class Entity {
         $stmnt->execute(['pretty_url' => $fieldValue]);
         $pageObj = $stmnt->fetch(PDO::FETCH_ASSOC);
         $result = $this->setValue($pageObj);
+
         return $result;
     }
 

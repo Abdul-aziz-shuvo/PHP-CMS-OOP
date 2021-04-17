@@ -1,6 +1,6 @@
 <?php 
 
-include ROOT_PATH.'src/Route.php';
+require_once( MAIN_PATH.'src/Entity.php');
 
 class Router extends Entity {
     
